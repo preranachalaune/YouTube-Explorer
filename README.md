@@ -1,16 +1,116 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+# YouTube Explorer
 
-Currently, two official plugins are available:
+A responsive YouTube video search application built with React, Node.js, Express, and RapidAPI.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+YouTube Explorer allows users to search for YouTube videos, view video details, and explore additional search results through cursor-based pagination.
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Search YouTube videos using keywords
+- Display video thumbnails
+- Display video titles and channel names
+- Show video duration and view count
+- Load more videos using cursor-based pagination
+- Loading indicators
+- Error handling
+- Empty search result handling
+- Responsive user interface
+- Clear search functionality
 
-## Expanding the Oxlint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+### Frontend
+
+- React
+- JavaScript
+- CSS
+- Vite
+
+### Backend
+
+- Node.js
+- Express.js
+- RapidAPI
+- YouTube Data API
+
+## Project Structure
+
+```text
+YouTube-Explorer/
+├── server/
+│   ├── server.js
+│   └── package.json
+├── src/
+│   ├── App.jsx
+│   ├── App.css
+│   └── main.jsx
+├── public/
+├── index.html
+├── package.json
+├── package-lock.json
+├── vite.config.js
+├── .gitignore
+└── README.md
+```
+
+## Installation and Setup
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/preranachalaune/YouTube-Explorer.git
+cd YouTube-Explorer
+```
+
+### 2. Install Frontend Dependencies
+
+```bash
+npm install
+```
+
+### 3. Configure Environment Variables
+
+Create a `.env` file inside the `server` folder. Add your RapidAPI credentials using the variable names expected by `server.js`.
+
+Never upload your `.env` file or API key to GitHub.
+
+### 4. Install Backend Dependencies
+
+Open a separate terminal and run:
+
+```bash
+cd server
+npm install
+```
+
+### 5. Start the Backend Server
+
+From the `server` folder, run:
+
+```bash
+node server.js
+```
+
+The backend server should run at `http://localhost:5000`.
+
+### 6. Start the Frontend
+
+Open another terminal in the project root folder and run:
+
+```bash
+npm run dev
+```
+
+Open the local URL shown in your terminal, usually `http://localhost:5173`.
+
+## Security
+
+- Keep your RapidAPI key private.
+- Store API credentials in the server's `.env` file.
+- Ensure `.env` is included in `.gitignore`.
+- Never commit secret credentials to GitHub.
+
+## Author
+
+Created as a YouTube video search project using React and Node.js.

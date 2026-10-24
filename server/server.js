@@ -1,3 +1,4 @@
+
 const path = require("path");
 
 require("dotenv").config({
@@ -9,10 +10,16 @@ const cors = require("cors");
 
 const app = express();
 
-// Allow requests from the Vite frontend
+// Allow requests from local and deployed Vite frontends
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://127.0.0.1:5173",
+  "https://you-tube-explorer-front-git-e84fac-chalauneprena-7467s-projects.vercel.app",
+];
+
 app.use(
   cors({
-    origin: ["http://localhost:5173", "http://127.0.0.1:5173"],
+    origin: allowedOrigins,
     methods: ["GET", "POST", "OPTIONS"],
   })
 );
@@ -51,7 +58,7 @@ app.get("/api/search", async (req, res) => {
 
     // Check whether RapidAPI key exists
     if (!process.env.RAPIDAPI_KEY) {
-      console.error("RapidAPI key is missing from .env");
+      console.error("RapidAPI key is missing from environment variables.");
 
       return res.status(500).json({
         success: false,

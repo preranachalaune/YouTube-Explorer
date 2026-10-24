@@ -1,7 +1,9 @@
+
 import { useState } from "react";
 import "./App.css";
 
-const API_URL = "http://localhost:5000/api/search";
+// Deployed backend API
+const API_URL = "https://youtube-explorer-server.vercel.app/api/search";
 
 function App() {
   const [query, setQuery] = useState("");
@@ -13,7 +15,7 @@ function App() {
   const [hasSearched, setHasSearched] = useState(false);
   const [nextCursor, setNextCursor] = useState("");
 
-  // Fetch videos from the backend
+  // Fetch videos from the deployed backend
   const fetchVideos = async (searchTerm, cursor = "") => {
     const params = new URLSearchParams({
       q: searchTerm,
@@ -23,7 +25,10 @@ function App() {
       params.set("cursor", cursor);
     }
 
-    const response = await fetch(`${API_URL}?${params.toString()}`);
+    const response = await fetch(
+      `${API_URL}?${params.toString()}`
+    );
+
     const data = await response.json();
 
     if (!response.ok) {
@@ -90,7 +95,10 @@ function App() {
     setError("");
 
     try {
-      const result = await fetchVideos(searchedQuery, nextCursor);
+      const result = await fetchVideos(
+        searchedQuery,
+        nextCursor
+      );
 
       setVideos((previousVideos) => {
         const existingIds = new Set(
@@ -223,7 +231,6 @@ function App() {
                 key={video.videoId}
                 aria-label={`Watch ${video.title || "YouTube video"}`}
               >
-                {/* Thumbnail */}
                 <div className="thumbnail-container">
                   <img
                     src={
@@ -246,10 +253,8 @@ function App() {
                   )}
                 </div>
 
-                {/* Video Information */}
                 <div className="video-info">
                   <h3>{video.title || "Untitled video"}</h3>
-
                   <p>{video.author?.title || "Unknown channel"}</p>
 
                   <small>

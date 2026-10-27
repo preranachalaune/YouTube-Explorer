@@ -2,8 +2,7 @@
 import { useState } from "react";
 import "./App.css";
 
-// Deployed backend API
-const API_URL = "https://youtube-explorer-server.vercel.app/api/search";
+const API_URL = "http://localhost:5000/api/search";
 
 function App() {
   const [query, setQuery] = useState("");

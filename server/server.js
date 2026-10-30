@@ -1,4 +1,3 @@
-
 const path = require("path");
 
 require("dotenv").config({
@@ -15,6 +14,7 @@ const allowedOrigins = [
   "http://localhost:5173",
   "http://127.0.0.1:5173",
   "https://you-tube-explorer-front-git-e84fac-chalauneprena-7467s-projects.vercel.app",
+  "https://youtube-explorer-fresh-hgxx.vercel.app",
 ];
 
 app.use(

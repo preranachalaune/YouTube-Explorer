@@ -1,7 +1,8 @@
 
 import { useState } from "react";
 import "./App.css";
-const API_URL = "https://youtube-explorer-fresh.vercel.app/api/search";
+
+const API_URL = "https://youtube-explorer-server.vercel.app/api/search";
 
 function App() {
   const [query, setQuery] = useState("");
@@ -23,16 +24,14 @@ function App() {
       params.set("cursor", cursor);
     }
 
-    const response = await fetch(
-      `${API_URL}?${params.toString()}`
-    );
-
+    const response = await fetch(`${API_URL}?${params.toString()}`);
     const data = await response.json();
 
     if (!response.ok) {
       throw new Error(
         data.details?.message ||
           data.error ||
+          data.message ||
           "Failed to fetch videos."
       );
     }
@@ -93,10 +92,7 @@ function App() {
     setError("");
 
     try {
-      const result = await fetchVideos(
-        searchedQuery,
-        nextCursor
-      );
+      const result = await fetchVideos(searchedQuery, nextCursor);
 
       setVideos((previousVideos) => {
         const existingIds = new Set(

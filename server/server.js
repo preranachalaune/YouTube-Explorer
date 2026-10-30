@@ -1,3 +1,4 @@
+
 const path = require("path");
 
 require("dotenv").config({
@@ -13,9 +14,13 @@ const app = express();
 const allowedOrigins = [
   "http://localhost:5173",
   "http://127.0.0.1:5173",
+
   "https://you-tube-explorer-front-git-e84fac-chalauneprena-7467s-projects.vercel.app",
   "https://youtube-explorer-fresh-hgxx.vercel.app",
   "https://youtube-explorer-frontend.vercel.app",
+
+  // Actual frontend domain from the CORS error
+  "https://you-tube-explorer-frontend.vercel.app",
 ];
 
 app.use(
